@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Pj8\SentryModule;
 
 use BEAR\Resource\ResourceObject;
+use BEAR\Sunday\Extension\Error\ErrorInterface;
 use InvalidArgumentException;
 use Pj8\SentryModule\Annotation\Monitorable;
 use Ray\Di\AbstractModule;
@@ -35,6 +36,10 @@ class SentryModule extends AbstractModule
     protected function configure(): void
     {
         $this->bind()->annotatedWith('sentry-options')->toInstance($this->config);
+
+        $this->rename(ErrorInterface::class, 'original');
+        $this->bind(ErrorInterface::class)->to(SentryErrorHandler::class);
+
         $this->bind(CliNameBuilder::class);
         $this->bind(WebNameBuilder::class);
         $this->bind()->annotatedWith('sentry-tr-name')->toProvider(TransactionNameProvider::class);
