@@ -10,12 +10,14 @@ use BEAR\Resource\Uri;
 class FakeRo extends ResourceObject
 {
     private FakeBaz $baz;
+    private FakeBar $bar;
 
-    public function __construct(FakeBaz $baz)
+    public function __construct(FakeBaz $baz, FakeBar $bar)
     {
         $this->baz = $baz;
+        $this->bar = $bar;
         // @see \Pj8\SentryModule\ResourceSpanFactory
-        $this->uri = new Uri('app://foo/bar');
+        $this->uri = new Uri('app://self/foo');
     }
 
     public function bar(): void
@@ -26,6 +28,7 @@ class FakeRo extends ResourceObject
     {
         $this->baz->onGet();
         $this->baz->foo();
+        $this->bar->foo();
         return $this;
     }
 

@@ -8,24 +8,12 @@ use BEAR\Resource\ResourceObject;
 use BEAR\Resource\Uri;
 use Pj8\SentryModule\Annotation\Monitorable;
 
-class FakeBaz extends ResourceObject
+class FakeBar
 {
-    public function __construct()
-    {
-        $this->uri = new Uri('app://self/baz');
-    }
-
-    /**
-     * @return static
-     */
-    public function onGet()
-    {
-        return $this;
-    }
-
     /**
      * @Monitorable()
      */
+    #[Monitorable]
     public function foo(): void
     {
     }
