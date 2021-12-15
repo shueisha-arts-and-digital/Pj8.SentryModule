@@ -22,31 +22,44 @@ composer require pj8/sentry-module
 - モジュールインストール
 
 ```php
-use BEAR\Package\AbstractAppModule;
-use BEAR\Sunday\Extension\Error\ErrorInterface;
+use Ray\Di\AbstractModule;
 use Pj8\SentryModule\SentryModule;
-use Pj8\SentryModule\SentryErrorHandler;
+
+class AppModule extends AbstractModule
+{
+    protected function configure()
+    {
+        $this->install(new SentryModule(['dsn' => 'https://xxx@xxx.sentry.io/xxx"']));
+    }
+}
+```
+
+- エラーキャプチャー
+
+エラーキャプチャー機能を有効化するには `SentryErrorModule` をインストールします。
+SentryErrorModule は下記のインターフェイスの束縛を上書きします。
+
+- `\BEAR\Sunday\Extension\Error\ErrorInterface`
+- `\BEAR\Sunday\Extension\Error\ThrowableHandlerInterface`
+
+そのため、既にプロジェクト独自のエラーハンドラーが束縛されている場合は SentryErrorModule のエラーキャプチャー機能が動作しない場合があります。
+束縛の順序やコンテキストごとのモジュール設定など確認してください。
+
+例：
+```php
+use BEAR\Package\AbstractAppModule;
+use BEAR\Package\Context\ProdModule as PackageProdModule;
+use Pj8\SentryModule\SentryErrorModule;
 
 class ProdModule extends AbstractAppModule
 {
     protected function configure()
     {
-        $this->install(new SentryModule(['dsn' => 'https://xxx@xxx.sentry.io/xxx"']));
-        $this->rename(ErrorInterface::class, 'original');
-        $this->bind(ErrorInterface::class)->to(SentryErrorHandler::class);
+        $this->install(new PackageProdModule());
+        $this->install(new SentryErrorModule());
     }
 }
 ```
-
-### モジュールインストールの注意事項
-
-SentryModule はエラーをキャプチャーするために以下のインターフェイスの束縛を上書きします。
-
-- `\BEAR\Sunday\Extension\Error\ErrorInterface`
-- `\BEAR\Sunday\Extension\Error\ThrowableHandlerInterface`
-
-そのため、既にプロジェクト独自のエラーハンドラーが束縛されている場合は SentryModule のエラーキャプチャー機能が動作しない場合があります。
-束縛の順序やコンテキストごとのモジュール設定など確認してください。
 
 ## パフォーマンスモニタリング
 
