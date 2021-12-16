@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Pj8\SentryModule;
 
+use BEAR\Resource\ResourceObject;
 use InvalidArgumentException;
 use Pj8\SentryModule\Annotation\Monitorable;
 use Ray\Di\AbstractModule;
@@ -42,7 +43,12 @@ class SentryModule extends AbstractModule
         $this->bind(SpanInterface::class)->to(Span::class);
         $this->bind(SpanContextFactoryInterface::class)->to(SpanContextFactory::class);
         $this->bind(ResourceSpanFactory::class);
-
+        $this->bind(ResourceTraceInterface::class)->to(ResourceTrace::class);
+        $this->bindInterceptor(
+            $this->matcher->subclassesOf(ResourceObject::class),
+            new IsHttpMethodMatcher(),
+            [ResourceInterceptor::class]
+        );
         $this->bindInterceptor(
             $this->matcher->any(),
             $this->matcher->annotatedWith(Monitorable::class),

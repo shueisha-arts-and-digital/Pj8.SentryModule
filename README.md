@@ -2,7 +2,7 @@
 
 ![Continuous Integration](https://github.com/pj8/pj8.sentrymodule/workflows/Continuous%20Integration/badge.svg)
 
-BEAR.Sundayアプリケーションのエラーとパフォーマンスを[Sentry](https://docs.sentry.io/platforms/php/)でモニタリングします。
+BEAR.Sundayアプリケーションのエラーとパフォーマンスを[Sentry](https://docs.sentry.io/platforms/php/) でモニタリングします。
 
 ## インストール
 
@@ -29,7 +29,7 @@ class ProdModule extends AbstractAppModule
         // PackageProdModuleの後にSentryModuleをインストール
         $this->install(new SentryModule([
             'dsn' => 'https://secret@sentry.example.com/1'
-        ])
+        ]);
         $this->install(new SentryErrorModule($this));
     }
 }
@@ -37,7 +37,7 @@ class ProdModule extends AbstractAppModule
 
 ## パフォーマンスモニタリング
 
-パフォーマンス計測するメソッドに`Monitorable` 属性またはアノテーションを付与します。
+- パフォーマンス計測するメソッドに`Monitorable` 属性またはアノテーションを付与します。
 
 ```php
 use Pj8\SentryModule\Annotation\Monitorable;
@@ -57,11 +57,4 @@ public function foo()
 }
 ```
 
-## BEAR.Resourceサポート
-
-[BEAR.Resource](https://github.com/bearsunday/BEAR.Resource)のリソースリクエストを全てモニタリングします。
-
-```php
-$this->install(new SentryModule(['dsn' => 'https://secret@sentry.example.com/1']));
-$this->install(new ResourceMonitorModule());
-```
+- [BEAR.Resource](https://github.com/bearsunday/BEAR.Resource) のリソースリクエストを全てモニタリングします。

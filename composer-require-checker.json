@@ -3,11 +3,7 @@
         "null", "true", "false",
         "static", "self", "parent",
         "array", "string", "int", "float", "bool", "iterable", "callable", "void", "object", "mixed",
-        "Doctrine\\Common\\Cache\\ArrayCache", "Doctrine\\Common\\Cache\\Cache",
-        "BEAR\\Resource\\ResourceObject",
-        "BEAR\\Sunday\\Extension\\Error\\ErrorInterface",
-        "BEAR\\Sunday\\Extension\\Error\\ThrowableHandlerInterface",
-        "BEAR\\Sunday\\Extension\\Router\\RouterMatch"
+        "Doctrine\\Common\\Cache\\ArrayCache", "Doctrine\\Common\\Cache\\Cache"
     ],
     "php-core-extensions" : [
         "Core",
