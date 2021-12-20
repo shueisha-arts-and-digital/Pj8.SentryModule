@@ -2,9 +2,11 @@
 
 namespace Pj8\SentryModule;
 
+use LogicException;
 use PHPUnit\Framework\TestCase;
 use Sentry\Tracing\Span as SentrySpan;
 use Sentry\Tracing\SpanContext;
+use Sentry\Tracing\SpanStatus;
 
 class SpanTest extends TestCase
 {
@@ -45,6 +47,33 @@ class SpanTest extends TestCase
 
         $result = $span->isFirst();
         $this->assertFalse($result);
+    }
+
+    public function testSetCurrentSpanUpdateStatus(): void
+    {
+        $span = $this->createSpan();
+        $dummy = new SpanContext();
+        $span->start($dummy);
+
+        $fixture = 404;
+        $status = SpanStatus::createFromHttpStatusCode($fixture);
+        $tracingSpan = $span->getCurrentSpan();
+        if ($tracingSpan === null) {
+            throw new LogicException();
+        }
+
+        /** @psalm-suppress StaticAccess */
+        $tracingSpan->setStatus($status);
+
+        $span->setCurrentSpan($tracingSpan);
+
+        $current = $span->getCurrentSpan();
+        if ($current === null) {
+            throw new LogicException();
+        }
+
+        $result = $current->getStatus();
+        $this->assertSame($status, $result);
     }
 
     private function createSpan(): Span
