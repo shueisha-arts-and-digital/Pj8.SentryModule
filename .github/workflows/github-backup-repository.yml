@@ -17,3 +17,5 @@ jobs:
       AWS_3RD_ROLE_ARN: ${{ secrets.AWS_3RD_ROLE_ARN }}
       AWS_REGION: ${{ secrets.AWS_REGION }}
       BACKUP_BUCKET_NAME: ${{ secrets.BACKUP_BUCKET_NAME }}
+    with:
+      event-type: from-public
