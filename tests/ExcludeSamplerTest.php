@@ -10,9 +10,7 @@ use Sentry\Tracing\TransactionContext;
 
 class ExcludeSamplerTest extends TestCase
 {
-    /**
-     * @dataProvider getSampleExcludeData
-     */
+    /** @dataProvider getSampleExcludeData */
     public function testInvokeSamplingCaseExcludePath(string $excludeConf, string $transactionName): void
     {
         $default = 0.5;
@@ -40,9 +38,7 @@ class ExcludeSamplerTest extends TestCase
         $this->assertSame($default, $result);
     }
 
-    /**
-     * @dataProvider getSampleExcludeData
-     */
+    /** @dataProvider getSampleExcludeData */
     public function testInvokeReturnsFloatZeroCaseEnvKeyNotFound(): void
     {
         $sampler = new ExcludeSampler((float) false, []);
@@ -54,9 +50,7 @@ class ExcludeSamplerTest extends TestCase
         $this->assertSame(0.0, $result);
     }
 
-    /**
-     * @return string[][]
-     */
+    /** @return string[][] */
     public function getSampleExcludeData(): array
     {
         return [

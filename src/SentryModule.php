@@ -11,9 +11,7 @@ use Ray\Di\Scope;
 
 use function array_key_exists;
 
-/**
- * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
- */
+/** @SuppressWarnings(PHPMD.CouplingBetweenObjects) */
 class SentryModule extends AbstractModule
 {
     /** @var array<string, ?string> Sentry SDK 初期化オプション */
@@ -29,6 +27,7 @@ class SentryModule extends AbstractModule
     {
         $this->guardInvalid($config);
         $this->config = $config;
+
         parent::__construct();
     }
 
@@ -46,13 +45,11 @@ class SentryModule extends AbstractModule
         $this->bindInterceptor(
             $this->matcher->any(),
             $this->matcher->annotatedWith(Monitorable::class),
-            [MonitorInterceptor::class]
+            [MonitorInterceptor::class],
         );
     }
 
-    /**
-     * @param array<string, ?string> $config
-     */
+    /** @param array<string, ?string> $config */
     private function guardInvalid(array $config): void
     {
         if (! array_key_exists('dsn', $config)) {

@@ -15,9 +15,7 @@ class SentryThrowableHandler implements ThrowableHandlerInterface
 {
     private ThrowableHandlerInterface $originalHandler;
 
-    /**
-     * @Named("original=original")
-     */
+    /** @Named("original=original") */
     public function __construct(ThrowableHandlerInterface $original)
     {
         $this->originalHandler = $original;

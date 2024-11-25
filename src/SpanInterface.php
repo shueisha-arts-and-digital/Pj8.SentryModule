@@ -13,9 +13,7 @@ interface SpanInterface
 
     public function finish(): void;
 
-    /**
-     * @return ?TracingSpan
-     */
+    /** @return ?TracingSpan */
     public function getCurrentSpan();
 
     public function isFirst(): bool;

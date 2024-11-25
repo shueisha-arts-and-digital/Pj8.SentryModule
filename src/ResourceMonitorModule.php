@@ -15,7 +15,7 @@ class ResourceMonitorModule extends AbstractModule
         $this->bindInterceptor(
             $this->matcher->subclassesOf(ResourceObject::class),
             new IsHttpMethodMatcher(),
-            [ResourceInterceptor::class]
+            [ResourceInterceptor::class],
         );
     }
 }

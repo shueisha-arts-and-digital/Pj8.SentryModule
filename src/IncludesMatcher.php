@@ -17,9 +17,7 @@ class IncludesMatcher extends AbstractMatcher
     /** @var string[] 同値判定対象 */
     private array $values;
 
-    /**
-     * @param string|string[] $values 同値判定対象
-     */
+    /** @param string|string[] $values 同値判定対象 */
     public function __construct($values)
     {
         parent::__construct();
@@ -28,7 +26,7 @@ class IncludesMatcher extends AbstractMatcher
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function matchesClass(ReflectionClass $class, array $arguments): bool
     {
@@ -36,7 +34,7 @@ class IncludesMatcher extends AbstractMatcher
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function matchesMethod(ReflectionMethod $method, array $arguments): bool
     {

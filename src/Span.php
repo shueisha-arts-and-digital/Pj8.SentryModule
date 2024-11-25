@@ -16,11 +16,9 @@ final class Span implements SpanInterface
 {
     /** @var array<(TracingSpan|mixed)> */
     private array $spans = [];
-    private TransactionInterface $transaction;
 
-    public function __construct(TransactionInterface $transaction)
+    public function __construct(private TransactionInterface $transaction)
     {
-        $this->transaction = $transaction;
     }
 
     public function __destruct()
@@ -52,9 +50,7 @@ final class Span implements SpanInterface
         $span->finish();
     }
 
-    /**
-     * @return TracingSpan|Transaction|null
-     */
+    /** @return TracingSpan|Transaction|null */
     public function getCurrentSpan()
     {
         if ($this->spans) {
