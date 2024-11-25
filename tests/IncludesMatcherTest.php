@@ -23,7 +23,7 @@ class IncludesMatcherTest extends TestCase
     }
 
     /** @return ReflectionMethod[][] */
-    public function getHttpMethodData(): array
+    public static function getHttpMethodData(): array
     {
         return [
             [new ReflectionMethod(FakeRo::class, 'onGet')],
@@ -34,7 +34,7 @@ class IncludesMatcherTest extends TestCase
     }
 
     /** @return ReflectionMethod[][] */
-    public function getUnrelatedMethodData(): array
+    public static function getUnrelatedMethodData(): array
     {
         return [
             [new ReflectionMethod(FakeRo::class, 'bar')],

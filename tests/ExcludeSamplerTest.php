@@ -51,7 +51,7 @@ class ExcludeSamplerTest extends TestCase
     }
 
     /** @return string[][] */
-    public function getSampleExcludeData(): array
+    public static function getSampleExcludeData(): array
     {
         return [
             [

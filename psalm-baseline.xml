@@ -15,29 +15,11 @@
       <code><![CDATA[$invocation]]></code>
       <code><![CDATA[$invocation]]></code>
     </InvalidArgument>
-    <ParseError>
-      <code><![CDATA[ResourceTrace|null]]></code>
-      <code><![CDATA[Transaction|null]]></code>
-    </ParseError>
-    <TooManyArguments>
-      <code><![CDATA[new ResourceModule('FakeApplication')]]></code>
-      <code><![CDATA[new ResourceModule('FakeApplication')]]></code>
-    </TooManyArguments>
   </file>
   <file src="tests/ResourceTraceTest.php">
     <InvalidArgument>
       <code><![CDATA[$invocation]]></code>
       <code><![CDATA[$invocation]]></code>
     </InvalidArgument>
-  </file>
-  <file src="tests/SentryErrorHandlerTest.php">
-    <TooManyArguments>
-      <code><![CDATA[new ResourceModule('FakeApplication')]]></code>
-    </TooManyArguments>
-  </file>
-  <file src="tests/SentryThrowableHandlerTest.php">
-    <TooManyArguments>
-      <code><![CDATA[new ResourceModule('FakeApplication')]]></code>
-    </TooManyArguments>
   </file>
 </files>
