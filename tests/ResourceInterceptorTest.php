@@ -19,12 +19,13 @@ use const PHP_VERSION_ID;
 
 class ResourceInterceptorTest extends TestCase
 {
-    private ?Transaction $transaction;
-    private ?ResourceTrace $trace;
+    private Transaction|null $transaction;
+    private ResourceTrace|null $trace;
 
     protected function setUp(): void
     {
         parent::setUp();
+
         if (PHP_VERSION_ID < 80100) {
             return;
         }
@@ -41,6 +42,7 @@ class ResourceInterceptorTest extends TestCase
     protected function tearDown(): void
     {
         restore_error_handler();
+
         parent::tearDown();
     }
 

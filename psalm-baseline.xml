@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<files psalm-version="5.26.1@d747f6500b38ac4f7dfc5edbcae6e4b637d7add0">
+  <file src="src/TransactionNameProvider.php">
+    <MissingTemplateParam>
+      <code><![CDATA[ProviderInterface]]></code>
+    </MissingTemplateParam>
+  </file>
+  <file src="tests/MonitorInterceptorTest.php">
+    <InvalidArgument>
+      <code><![CDATA[$invocation]]></code>
+    </InvalidArgument>
+  </file>
+  <file src="tests/ResourceInterceptorTest.php">
+    <InvalidArgument>
+      <code><![CDATA[$invocation]]></code>
+      <code><![CDATA[$invocation]]></code>
+    </InvalidArgument>
+  </file>
+  <file src="tests/ResourceTraceTest.php">
+    <InvalidArgument>
+      <code><![CDATA[$invocation]]></code>
+      <code><![CDATA[$invocation]]></code>
+    </InvalidArgument>
+  </file>
+</files>

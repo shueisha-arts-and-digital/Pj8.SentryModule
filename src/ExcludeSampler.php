@@ -14,17 +14,13 @@ final class ExcludeSampler implements TracesSamplerInterface
 {
     private float $defaultRate;
 
-    /** @var string[] */
-    private array $excludeNames;
-
     /**
      * @param float         $default      トレース計測レートのデフォルト値
      * @param array<string> $excludeNames トレース計測から常に除外したいトランザクション名の配列（オプション）
      */
-    public function __construct(float $default, array $excludeNames = [])
+    public function __construct(float $default, private array $excludeNames = [])
     {
         $this->defaultRate = $default;
-        $this->excludeNames = $excludeNames;
     }
 
     public function __invoke(SamplingContext $context): float

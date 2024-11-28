@@ -13,11 +13,8 @@ use function sprintf;
 
 final class SpanContextFactory implements SpanContextFactoryInterface
 {
-    private ResourceSpanFactory $factory;
-
-    public function __construct(ResourceSpanFactory $factory)
+    public function __construct(private ResourceSpanFactory $factory)
     {
-        $this->factory = $factory;
     }
 
     public function __invoke(MethodInvocation $invocation): SpanContext
@@ -37,7 +34,7 @@ final class SpanContextFactory implements SpanContextFactoryInterface
             '%s::%s (%s)',
             $invocation->getMethod()->getDeclaringClass()->getName(),
             $invocation->getMethod()->getName(),
-            (string) json_encode((array) $invocation->getNamedArguments())
+            (string) json_encode((array) $invocation->getNamedArguments()),
         ));
 
         return $spanContext;

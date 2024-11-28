@@ -15,8 +15,6 @@ use function Sentry\startTransaction;
 
 final class Transaction implements TransactionInterface
 {
-    /** @var array<string, string|mixed> */
-    private array $options;
     private string $transactionName;
     private SentryTransaction $transaction;
     private static string $operation = 'backend';
@@ -27,9 +25,8 @@ final class Transaction implements TransactionInterface
      * @Named("options=sentry-options,name=sentry-tr-name")
      */
     #[Named('options=sentry-options,name=sentry-tr-name')]
-    public function __construct(array $options, string $name)
+    public function __construct(private array $options, string $name)
     {
-        $this->options = $options;
         $this->transactionName = $name;
         $this->startTransaction();
     }

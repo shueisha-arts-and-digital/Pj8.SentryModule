@@ -9,23 +9,14 @@ use Ray\Aop\MethodInvocation;
 use Sentry\Tracing\Span as TracingSpan;
 use Sentry\Tracing\SpanStatus;
 
-/**
- * @SuppressWarnings(PHPMD.StaticAccess)
- */
+/** @SuppressWarnings(PHPMD.StaticAccess) */
 final class ResourceTrace implements ResourceTraceInterface
 {
-    private TransactionInterface $transaction;
-    private SpanInterface $span;
-    private SpanContextFactoryInterface $factory;
-
     public function __construct(
-        TransactionInterface $transaction,
-        SpanInterface $span,
-        SpanContextFactoryInterface $factory
+        private TransactionInterface $transaction,
+        private SpanInterface $span,
+        private SpanContextFactoryInterface $factory,
     ) {
-        $this->transaction = $transaction;
-        $this->span = $span;
-        $this->factory = $factory;
     }
 
     public function start(MethodInvocation $invocation): void

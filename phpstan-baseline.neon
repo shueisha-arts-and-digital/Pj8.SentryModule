@@ -1,0 +1,79 @@
+parameters:
+	ignoreErrors:
+		-
+			message: '#^Method Pj8\\SentryModule\\ResourceSpanFactory\:\:__invoke\(\) has parameter \$invocation with generic interface Ray\\Aop\\MethodInvocation but does not specify its types\: T$#'
+			identifier: missingType.generics
+			count: 1
+			path: src/ResourceSpanFactory.php
+
+		-
+			message: '#^Method Pj8\\SentryModule\\ResourceTrace\:\:start\(\) has parameter \$invocation with generic interface Ray\\Aop\\MethodInvocation but does not specify its types\: T$#'
+			identifier: missingType.generics
+			count: 1
+			path: src/ResourceTrace.php
+
+		-
+			message: '#^PHPDoc tag @SuppressWarnings has invalid value \(\(PHPMD\.StaticAccess\)\)\: Unexpected token "\.StaticAccess\)", expected ''\)'' at offset 27 on line 1$#'
+			identifier: phpDoc.parseError
+			count: 1
+			path: src/ResourceTrace.php
+
+		-
+			message: '#^Method Pj8\\SentryModule\\ResourceTraceInterface\:\:start\(\) has parameter \$invocation with generic interface Ray\\Aop\\MethodInvocation but does not specify its types\: T$#'
+			identifier: missingType.generics
+			count: 1
+			path: src/ResourceTraceInterface.php
+
+		-
+			message: '#^PHPDoc tag @SuppressWarnings has invalid value \(\(PHPMD\.CouplingBetweenObjects\)\)\: Unexpected token "\.CouplingBetweenObjects\)", expected ''\)'' at offset 27 on line 1$#'
+			identifier: phpDoc.parseError
+			count: 1
+			path: src/SentryModule.php
+
+		-
+			message: '#^Method Pj8\\SentryModule\\SpanContextFactory\:\:__invoke\(\) has parameter \$invocation with generic interface Ray\\Aop\\MethodInvocation but does not specify its types\: T$#'
+			identifier: missingType.generics
+			count: 1
+			path: src/SpanContextFactory.php
+
+		-
+			message: '#^Method Pj8\\SentryModule\\SpanContextFactory\:\:getGenericContext\(\) has parameter \$invocation with generic interface Ray\\Aop\\MethodInvocation but does not specify its types\: T$#'
+			identifier: missingType.generics
+			count: 1
+			path: src/SpanContextFactory.php
+
+		-
+			message: '#^Method Pj8\\SentryModule\\SpanContextFactoryInterface\:\:__invoke\(\) has parameter \$invocation with generic interface Ray\\Aop\\MethodInvocation but does not specify its types\: T$#'
+			identifier: missingType.generics
+			count: 1
+			path: src/SpanContextFactoryInterface.php
+
+		-
+			message: '#^Class Pj8\\SentryModule\\TransactionNameProvider implements generic interface Ray\\Di\\ProviderInterface but does not specify its types\: T$#'
+			identifier: missingType.generics
+			count: 1
+			path: src/TransactionNameProvider.php
+
+		-
+			message: '#^PHPDoc tag @SuppressWarnings has invalid value \(\(PHPMD\.Superglobals\)\)\: Unexpected token "\.Superglobals\)", expected ''\)'' at offset 27 on line 1$#'
+			identifier: phpDoc.parseError
+			count: 1
+			path: src/TransactionNameProvider.php
+
+		-
+			message: '#^Comparison operation "\<" between int\<80100, 80499\> and 80100 is always false\.$#'
+			identifier: smaller.alwaysFalse
+			count: 1
+			path: tests/ResourceInterceptorTest.php
+
+		-
+			message: '#^Property Pj8\\SentryModule\\ResourceInterceptorTest\:\:\$trace \(Pj8\\SentryModule\\ResourceTrace\|null\) is never assigned null so it can be removed from the property type\.$#'
+			identifier: property.unusedType
+			count: 1
+			path: tests/ResourceInterceptorTest.php
+
+		-
+			message: '#^Property Pj8\\SentryModule\\ResourceInterceptorTest\:\:\$transaction \(Pj8\\SentryModule\\Transaction\|null\) is never assigned null so it can be removed from the property type\.$#'
+			identifier: property.unusedType
+			count: 1
+			path: tests/ResourceInterceptorTest.php

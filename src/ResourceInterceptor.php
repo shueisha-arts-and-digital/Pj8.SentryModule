@@ -12,11 +12,9 @@ use Ray\Aop\MethodInvocation;
 final class ResourceInterceptor implements MethodInterceptor, MonitorInterceptorInterface
 {
     private static bool $initialized = false;
-    private ResourceTraceInterface $trace;
 
-    public function __construct(ResourceTraceInterface $trace)
+    public function __construct(private ResourceTraceInterface $trace)
     {
-        $this->trace = $trace;
     }
 
     /**

@@ -15,17 +15,13 @@ class SentryErrorHandler implements ErrorInterface
 {
     private ErrorInterface $originalError;
 
-    /**
-     * @Named("original=original")
-     */
+    /** @Named("original=original") */
     public function __construct(ErrorInterface $original)
     {
         $this->originalError = $original;
     }
 
-    /**
-     * @return ErrorInterface
-     */
+    /** @return ErrorInterface */
     public function handle(Exception $e, Request $request) // phpcs:disable SlevomatCodingStandard.Exceptions.ReferenceThrowableOnly.ReferencedGeneralException
     {
         captureException($e);

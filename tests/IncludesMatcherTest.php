@@ -8,28 +8,22 @@ use ReflectionMethod;
 
 class IncludesMatcherTest extends TestCase
 {
-    /**
-     * @dataProvider getHttpMethodData
-     */
+    /** @dataProvider getHttpMethodData */
     public function testMatchesMethodMatchesHttpMethod(ReflectionMethod $method): void
     {
         $matcher = new IsHttpMethodMatcher();
         $this->assertTrue($matcher->matchesMethod($method, []), 'method: ' . $method->getName());
     }
 
-    /**
-     * @dataProvider getUnrelatedMethodData
-     */
+    /** @dataProvider getUnrelatedMethodData */
     public function testMatchesMethodUnmatchesUnrelatedMethod(ReflectionMethod $method): void
     {
         $matcher = new IsHttpMethodMatcher();
         $this->assertFalse($matcher->matchesMethod($method, []), 'method: ' . $method->getName());
     }
 
-    /**
-     * @return ReflectionMethod[][]
-     */
-    public function getHttpMethodData(): array
+    /** @return ReflectionMethod[][] */
+    public static function getHttpMethodData(): array
     {
         return [
             [new ReflectionMethod(FakeRo::class, 'onGet')],
@@ -39,10 +33,8 @@ class IncludesMatcherTest extends TestCase
         ];
     }
 
-    /**
-     * @return ReflectionMethod[][]
-     */
-    public function getUnrelatedMethodData(): array
+    /** @return ReflectionMethod[][] */
+    public static function getUnrelatedMethodData(): array
     {
         return [
             [new ReflectionMethod(FakeRo::class, 'bar')],

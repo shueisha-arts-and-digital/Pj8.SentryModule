@@ -9,13 +9,8 @@ use Ray\Aop\MethodInvocation;
 
 final class MonitorInterceptor implements MethodInterceptor, MonitorInterceptorInterface
 {
-    private SpanInterface $span;
-    private SpanContextFactoryInterface $factory;
-
-    public function __construct(SpanInterface $span, SpanContextFactoryInterface $factory)
+    public function __construct(private SpanInterface $span, private SpanContextFactoryInterface $factory)
     {
-        $this->span = $span;
-        $this->factory = $factory;
     }
 
     /**
