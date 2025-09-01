@@ -1,6 +1,6 @@
 # Pj8.SentryModule
 
-![Continuous Integration](https://github.com/pj8/pj8.sentrymodule/workflows/Continuous%20Integration/badge.svg)
+![Continuous Integration](https://github.com/shueisha-arts-and-digital/pj8.sentrymodule/workflows/Continuous%20Integration/badge.svg)
 
 BEAR.Sundayアプリケーションのエラーとパフォーマンスを[Sentry](https://docs.sentry.io/platforms/php/)でモニタリングします。
 
