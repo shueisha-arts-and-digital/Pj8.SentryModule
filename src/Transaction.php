@@ -23,8 +23,10 @@ final class Transaction implements TransactionInterface
 
     /** @param array{dsn?: string|null, environment?: string|null, release?: string|null, sample_rate?: float|int, traces_sample_rate?: float|int|null, profiles_sample_rate?: float|int|null, send_default_pii?: bool, server_name?: string, in_app_exclude?: array<array-key, string>, in_app_include?: array<array-key, string>, integrations?: array<array-key, IntegrationInterface>|callable, default_integrations?: bool, before_send?: callable, before_send_transaction?: callable, before_breadcrumb?: callable, trace_propagation_targets?: array<array-key, string>|null, attach_stacktrace?: bool, context_lines?: int|null, enable_logs?: bool, logger?: LoggerInterface|null, spotlight?: bool, spotlight_url?: string} $options */
     public function __construct(
-        #[Named('sentry-options')] private array $options,
-        #[Named('sentry-tr-name')] string $name,
+        #[Named('sentry-options')]
+        private array $options,
+        #[Named('sentry-tr-name')]
+        string $name,
     ) {
         $this->transactionName = $name;
         $this->startTransaction();
