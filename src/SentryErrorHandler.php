@@ -15,9 +15,10 @@ class SentryErrorHandler implements ErrorInterface
 {
     private ErrorInterface $originalError;
 
-    /** @Named("original=original") */
-    public function __construct(ErrorInterface $original)
-    {
+    public function __construct(
+        #[Named('original')]
+        ErrorInterface $original,
+    ) {
         $this->originalError = $original;
     }
 
