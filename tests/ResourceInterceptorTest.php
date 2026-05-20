@@ -15,7 +15,6 @@ use function set_error_handler;
 use function str_contains;
 
 use const E_DEPRECATED;
-use const PHP_VERSION_ID;
 
 class ResourceInterceptorTest extends TestCase
 {
@@ -26,12 +25,8 @@ class ResourceInterceptorTest extends TestCase
     {
         parent::setUp();
 
-        if (PHP_VERSION_ID < 80100) {
-            return;
-        }
-
         // Ray.Di 2.13.0後方互換のため refs. https://github.com/ray-di/Ray.Di/releases/tag/2.13.1
-        set_error_handler([$this, 'ignoreRayDiDeprecatedError']);
+        set_error_handler($this->ignoreRayDiDeprecatedError(...));
     }
 
     private function ignoreRayDiDeprecatedError(int $errno, string $s, string $file): bool
