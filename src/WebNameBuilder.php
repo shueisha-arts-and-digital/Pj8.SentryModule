@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Pj8\SentryModule;
 
+use function is_string;
 use function parse_url;
 use function sprintf;
 
@@ -26,8 +27,10 @@ class WebNameBuilder
             return 'web - unknown';
         }
 
-        $site = $server['HTTP_HOST'];
-        $path = parse_url($server['REQUEST_URI'], PHP_URL_PATH);
+        $site = is_string($server['HTTP_HOST']) ? $server['HTTP_HOST'] : 'unknown';
+        $requestUri = is_string($server['REQUEST_URI']) ? $server['REQUEST_URI'] : '';
+        $path = parse_url($requestUri, PHP_URL_PATH);
+        $path = is_string($path) ? $path : '';
 
         return sprintf('%s - %s', $site, $path);
     }
