@@ -12,7 +12,7 @@ permissions:
 
 jobs:
   call-reusable-workflow:
-    uses: shueisha-arts-and-digital/.github/.github/workflows/github-backup-repository.yml@413c7dc895319292afacb5f2d1815b88a843e714 # main
+    uses: shueisha-arts-and-digital/.github/.github/workflows/github-backup-repository.yml@0e270a0c769f27d835c0b1984b9117fd624b29fa # main
     secrets:
       AWS_3RD_ROLE_ARN: ${{ secrets.AWS_3RD_ROLE_ARN }}
       AWS_REGION: ${{ secrets.AWS_REGION }}
